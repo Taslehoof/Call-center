@@ -18,7 +18,6 @@ import org.apache.causeway.applib.annotation.ParameterLayout;
 import org.apache.causeway.applib.services.factory.FactoryService;
 import org.apache.causeway.applib.services.repository.RepositoryService;
 import org.apache.causeway.applib.util.ObjectContracts;
-import javax.jdo.annotations.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +35,8 @@ import java.util.List;
                 + "WHERE dni == :dni"
                 + "ORDER BY dni ASC")
 })
-@Unique(name = "Usuario_dni_UNQ", members = {"dni"})
-@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = SimpleModule.SCHEMA)
+//@Unique(name = "Usuario_dni_UNQ", members = {"dni"})
+//@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = SimpleModule.SCHEMA)
 @Getter @Setter
 public class Usuario implements Comparable<Usuario>{
 
@@ -111,11 +110,11 @@ public class Usuario implements Comparable<Usuario>{
         return ObjectContracts.compare(this,other, "dni");
     }
 
-    @Inject @NotPersistent
+    @Inject
     @Getter(AccessLevel.NONE) @Setter(AccessLevel.NONE)
     FactoryService factoryService;
 
-    @Inject @NotPersistent
+    @Inject
     @Getter(AccessLevel.NONE) @Setter(AccessLevel.NONE)
     RepositoryService repositoryService;
 }
