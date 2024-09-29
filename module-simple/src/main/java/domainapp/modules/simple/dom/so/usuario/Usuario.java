@@ -2,6 +2,7 @@ package domainapp.modules.simple.dom.so.usuario;
 
 import domainapp.modules.simple.SimpleModule;
 import domainapp.modules.simple.dom.so.reclamo.Estado;
+import domainapp.modules.simple.dom.so.reclamo.Reclamo;
 import domainapp.modules.simple.dom.so.reclamo.TipoReclamo;
 
 import jakarta.inject.Inject;
@@ -20,6 +21,7 @@ import org.apache.causeway.applib.util.ObjectContracts;
 import javax.jdo.annotations.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 @NamedQueries({
         @NamedQuery(
