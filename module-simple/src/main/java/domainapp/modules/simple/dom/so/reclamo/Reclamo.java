@@ -5,7 +5,9 @@ import domainapp.modules.simple.dom.so.cuadrilla.Cuadrilla;
 import domainapp.modules.simple.dom.so.usuario.Usuario;
 
 import jakarta.inject.Inject;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.NamedQueries;
 
 import jakarta.persistence.NamedQuery;
@@ -16,6 +18,7 @@ import jakarta.persistence.metamodel.IdentifiableType;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NonNull;
 
 import lombok.Setter;
 
@@ -25,22 +28,24 @@ import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
 import org.apache.causeway.applib.annotation.BookmarkPolicy;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
+import org.apache.causeway.applib.annotation.Editing;
 import org.apache.causeway.applib.annotation.Optionality;
 import org.apache.causeway.applib.annotation.Parameter;
 import org.apache.causeway.applib.annotation.ParameterLayout;
 import org.apache.causeway.applib.annotation.Programmatic;
+import org.apache.causeway.applib.annotation.Property;
+import org.apache.causeway.applib.annotation.PropertyLayout;
 import org.apache.causeway.applib.annotation.SemanticsOf;
+import org.apache.causeway.applib.annotation.Title;
 import org.apache.causeway.applib.services.message.MessageService;
 import org.apache.causeway.applib.services.repository.RepositoryService;
 import org.apache.causeway.applib.util.ObjectContracts;
-
 import java.time.LocalDate;
 
 @Entity
 @Table(
         schema = SimpleModule.SCHEMA,
-        uniqueConstraints ={
-                @UniqueConstraint(name="Reclamo_nroReclamo_UNQ", columnNames = {"nroReclamo"})
+        uniqueConstraints ={ @UniqueConstraint(name="Reclamo_nroReclamo_UNQ", columnNames = {"nroReclamo"})
         }
 )
 @NamedQueries({
@@ -58,7 +63,6 @@ import java.time.LocalDate;
                 +" WHERE nroRclamos == :nroReclamo"
                 +"ORDER BY nroReclamo ASC"),
 })
-//@PersistentCapable(identityType = IdentityType.DATASTORE, Schema = SimpleModule.SCHEMA)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
 @Getter @Setter
@@ -68,13 +72,43 @@ public class Reclamo implements Comparable<Reclamo>{
     static final String FIND_LAST = "Reclamo.findLast";
     static final String FIND_BY_NRO_RECLAMO = "Reclamo.findByNroReclamo";
 
+    @Column(nullable = true, length = 10)
+    @Property(editing = Editing.DISABLED)
+    @Id
     private String nroReclamo;
+
+    @Column(nullable = false)
+    @NonNull
+    @Property
     private Usuario usuario;
+
+    @Column(nullable = true)
+    @NonNull
+    @Property
     private String direccion;
+
+    @Column(nullable = false)
+    @NonNull
+    @PropertyLayout(named = "Fecha de Creacion del Reclamo: ")
+    @Property(editing = Editing.DISABLED)
     private LocalDate fecha = LocalDate.now();
+
+    @Column(nullable = true)
+    @Title(prepend = "Reclamo: ")
+    @Property(editing = Editing.ENABLED)
     private TipoReclamo tipoReclamo;
+
+    @Column(nullable = false, length = 2000)
+    @Property(editing = Editing.ENABLED)
     private String descripcion;
+
+    @Column(nullable = false, length = 2000)
+    @Property(editing = Editing.DISABLED)
     private Estado estado;
+
+    @Column(nullable = true, name = "cuadrilla_asig_id")
+    @Property
+    @PropertyLayout(named = "Cuadrilla")
     private Cuadrilla cuadrilla;
 
     public Reclamo() {
