@@ -13,18 +13,27 @@
         <bs3:col span="6">
             <bs3:row>
                 <bs3:col span="12">
-                                    <cpt:fieldSet name="Datos del Reclamo"/>
-                                        <cpt:property  id="nroReclamo" namedEscaped="true"/>
-                    asdfasdfas
+                    <cpt:fieldSet name="Datos del Reclamo">
+                        <cpt:property  id="nroReclamo" namedEscaped="true"/>
+                        <cpt:property  id="estado" namedEscaped="true"/>
+                        <cpt:property  id="usuario" namedEscaped="true"/>
+                        <cpt:property  id="direccion" namedEscaped="true"/>
+                        <cpt:property  id="fecha" namedEscaped="true"/>
+                        <cpt:property  id="tipoReclamo" namedEscaped="true"/>
+                        <cpt:property  id="descripcion" namedEscaped="true" multiLine="8" hidden="ALL_TABLES"/>
+                        <cpt:property  id="fechaCierre" namedEscaped="true"/>
+                       <cpt:property  id="observacion" namedEscaped="true" multiLine="8" hidden="ALL_TABLES"/>
+                    </cpt:fieldSet>
+                </bs3:col>
+            </bs3:row>
+        </bs3:col>
+    </bs3:row>
+    <bs3:row>
+        <bs3:col span="6">
+            <bs3:row>
+                <bs3:col span="6">
                     <bs3:tabGroup>
                         <bs3:tab name="Identity">
-                            <bs3:row>
-                                <bs3:col span="12">
-                                    <cpt:fieldSet name="Identity" id="identity"/>
-                                </bs3:col>
-                            </bs3:row>
-                        </bs3:tab>
-                        <bs3:tab name="Other">
                             <bs3:row>
                                 <bs3:col span="12">
                                     <cpt:fieldSet name="Other" id="other" unreferencedProperties="true"/>
@@ -40,18 +49,8 @@
                         </bs3:tab>
                     </bs3:tabGroup>
                 </bs3:col>
-                <bs3:col span="12">
-                    <cpt:fieldSet name="Details" id="details"/>
-                </bs3:col>
             </bs3:row>
-        </bs3:col>
-        <bs3:col span="6">
-            <bs3:row>
-                <bs3:col span="12">
-                    <cpt:fieldSet name="Content" id="content"/>
-                </bs3:col>
-            </bs3:row>
-            <bs3:tabGroup  unreferencedCollections="true">
+                <bs3:tabGroup  unreferencedCollections="true">
             </bs3:tabGroup>
         </bs3:col>
     </bs3:row>
