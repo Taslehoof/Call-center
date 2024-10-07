@@ -55,12 +55,12 @@ import java.time.LocalDate;
                 name = Reclamo.FIND_LAST,
                 query = "SELECT "
                 +"ORDER BY nroReclamo DESC"),
-        @NamedQuery(
+        /*@NamedQuery(
                 name = Reclamo.FIND_BY_NRO_RECLAMO,
                 query = "SELECT "
                 +"FROM domainapp.modules.simple.dom.reclamo.Reclamo "
                 +" WHERE nroRclamos == :nroReclamo"
-                +"ORDER BY nroReclamo ASC"),
+                +"ORDER BY nroReclamo ASC")*/
 })
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
@@ -69,7 +69,7 @@ public class Reclamo implements Comparable<Reclamo>{
 
     static final String FIND = "Reclamo.find";
     static final String FIND_LAST = "Reclamo.findLast";
-    static final String FIND_BY_NRO_RECLAMO = "Reclamo.findByNroReclamo";
+    //static final String FIND_BY_NRO_RECLAMO = "Reclamo.findByNroReclamo";
 
     @Column(nullable = true, length = 10)
     @Property(editing = Editing.DISABLED)
