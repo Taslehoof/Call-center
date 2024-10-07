@@ -6,22 +6,47 @@ import domainapp.modules.simple.dom.so.reclamo.Reclamo;
 import domainapp.modules.simple.dom.so.reclamo.TipoReclamo;
 
 import jakarta.inject.Inject;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
+
+import jakarta.persistence.Table;
+
+import jakarta.persistence.UniqueConstraint;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.val;
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
+import org.apache.causeway.applib.annotation.BookmarkPolicy;
+import org.apache.causeway.applib.annotation.Collection;
+import org.apache.causeway.applib.annotation.DomainObject;
+import org.apache.causeway.applib.annotation.DomainObjectLayout;
+import org.apache.causeway.applib.annotation.DomainService;
+import org.apache.causeway.applib.annotation.Editing;
 import org.apache.causeway.applib.annotation.ParameterLayout;
+import org.apache.causeway.applib.annotation.Property;
+import org.apache.causeway.applib.annotation.Title;
 import org.apache.causeway.applib.services.factory.FactoryService;
 import org.apache.causeway.applib.services.repository.RepositoryService;
 import org.apache.causeway.applib.util.ObjectContracts;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(
+        schema = SimpleModule.SCHEMA,
+        uniqueConstraints = {@UniqueConstraint(name = "Usuario_dni_UNQ", columnNames = {"dni"})}
+)
 @NamedQueries({
         @NamedQuery(
                 name= Usuario.FIND,
@@ -35,7 +60,9 @@ import java.util.List;
                 + "WHERE dni == :dni"
                 + "ORDER BY dni ASC")
 })
-//@Unique(name = "Usuario_dni_UNQ", members = {"dni"})
+@DomainObject(editing = Editing.DISABLED)
+@DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+@ToString(onlyExplicitlyIncluded = true)
 //@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = SimpleModule.SCHEMA)
 @Getter @Setter
 public class Usuario implements Comparable<Usuario>{
@@ -43,12 +70,34 @@ public class Usuario implements Comparable<Usuario>{
     static final String FIND = "Usuario.find";
     static final String FIND_BY_NRO_RECLAMO= "Usuario.findByNroReclamo";
 
+    @Id
+    @Column(nullable = true, length = 8)
     private int dni;
+
+    @Column(nullable = true, length = 40)
+    @Title
     private String nombre;
+
+    @Column(nullable = true, length = 40)
+    @Title
     private String apellido;
+
+    @Column(nullable = true, length = 40)
+    @Property
     private String direccion;
+
+    @Column(nullable = true, length = 19)
+    @Property
     private String email;
+
+    @Column(nullable = true, length = 19)
+    @Property
     private int telefono;
+
+    //@Persistent(mappedBy = "usuario", dependentElement = "true")
+    @OneToMany
+    @JoinColumn(name = "reclamos_nroReclamo", referencedColumnName = "nroReclamo")
+    @Collection
     private List<Reclamo> reclamos = new ArrayList<Reclamo>();
 
     public static Usuario withName(final String nombre){
@@ -95,7 +144,7 @@ public class Usuario implements Comparable<Usuario>{
     @ActionLayout(named = "Cargar reclamo")
     public Usuario addReclamo(@ParameterLayout(named = "Tipo de Reclamo") final TipoReclamo tipoReclamo){
         final Reclamo reclamo = factoryService.create(Reclamo.class);
-        reclamo.setUsuario(this);
+        //reclamo.setUsuario(this);
         reclamo.setDireccion(this.direccion);
         reclamo.setFecha(LocalDate.now());
         reclamo.setTipoReclamo(tipoReclamo);

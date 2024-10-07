@@ -14,7 +14,6 @@ import jakarta.persistence.NamedQuery;
 
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
-import jakarta.persistence.metamodel.IdentifiableType;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -77,7 +76,7 @@ public class Reclamo implements Comparable<Reclamo>{
     @Id
     private String nroReclamo;
 
-    @Column(nullable = false)
+   //@Column(nullable = false)
     @NonNull
     @Property
     private Usuario usuario;
@@ -106,10 +105,10 @@ public class Reclamo implements Comparable<Reclamo>{
     @Property(editing = Editing.DISABLED)
     private Estado estado;
 
-    @Column(nullable = true, name = "cuadrilla_asig_id")
+/*    @Column(nullable = true, name = "cuadrilla_asig_id")
     @Property
     @PropertyLayout(named = "Cuadrilla")
-    private Cuadrilla cuadrilla;
+    private Cuadrilla cuadrilla;*/
 
     public Reclamo() {
     }
