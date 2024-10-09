@@ -20,32 +20,37 @@ import org.apache.causeway.applib.annotation.PromptStyle;
 import org.apache.causeway.applib.annotation.SemanticsOf;
 import org.apache.causeway.applib.services.repository.RepositoryService;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 import java.util.regex.Pattern;
 
-@Named(SimpleModule.NAMESPACE +"Usuarios")
+//@Named(SimpleModule.NAMESPACE +".Usuarios")
+@Named(SimpleModule.NAMESPACE)
 @DomainService
 @Priority(PriorityPrecedence.EARLY)
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
 public class Usuarios {
 
-    final UserRepo UserRepo;
+    @Autowired
+    private UserRepo userRepo;
+
     final RepositoryService repositoryService;
 
     @Action(semantics = SemanticsOf.SAFE)
     public List<Usuario> Listar(){
-        return UserRepo.findAll();
+        return userRepo.findAll();
     }
 
     public Usuario findByDniExact(int dni) {
-        return UserRepo.findByDni(dni);
+        return userRepo.findByDni(dni);
     }
 
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
     public List<Usuario> findByNombre(
             @Name final String nombre){
-        return UserRepo.findByNombreContais(nombre);
+        return userRepo.findByNombreContais(nombre);
     }
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)

@@ -14,6 +14,7 @@ import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 import jakarta.persistence.UniqueConstraint;
@@ -95,10 +96,10 @@ public class Usuario implements Comparable<Usuario>{
     private int telefono;
 
     //@Persistent(mappedBy = "usuario", dependentElement = "true")
-    @OneToMany
-    @JoinColumn(name = "reclamos_nroReclamo", referencedColumnName = "nroReclamo")
+    @OneToOne
+    @JoinColumn(name = "reclamo_nroReclamo", referencedColumnName = "nroReclamo")
     @Collection
-    private List<Reclamo> reclamos = new ArrayList<Reclamo>();
+    private List<Reclamo> reclamo = new ArrayList<Reclamo>();
 
     public static Usuario withName(final String nombre){
         val usuario = new Usuario();
@@ -123,14 +124,14 @@ public class Usuario implements Comparable<Usuario>{
         this.telefono = telefono;
     }
 
-    public Usuario(int dni, String nombre, String apellido, String direccion, String email, int telefono, List<Reclamo> reclamos) {
+    public Usuario(int dni, String nombre, String apellido, String direccion, String email, int telefono, List<Reclamo> reclamo) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
         this.email = email;
         this.telefono = telefono;
-        this.reclamos = reclamos;
+        this.reclamo = reclamo;
     }
 
     public int default0Update(){return getDni();}
@@ -149,7 +150,7 @@ public class Usuario implements Comparable<Usuario>{
         reclamo.setFecha(LocalDate.now());
         reclamo.setTipoReclamo(tipoReclamo);
         reclamo.setEstado(Estado.Sin_Asignar);
-        getReclamos().add(reclamo);
+        getReclamo().add(reclamo);
         repositoryService.persist(reclamo);
         return this;
     }

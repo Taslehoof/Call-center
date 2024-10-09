@@ -12,23 +12,28 @@ import org.apache.causeway.applib.annotation.PriorityPrecedence;
 import org.apache.causeway.applib.annotation.Programmatic;
 import org.apache.causeway.applib.services.repository.RepositoryService;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 
-@Named(SimpleModule.NAMESPACE+".Reclamos")
+//@Named(SimpleModule.NAMESPACE+".Reclamos")
+@Named(SimpleModule.NAMESPACE)
 @DomainService
 @Priority(PriorityPrecedence.EARLY)
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
 public class Reclamos {
 
-    final ReclaRepo ReclaRepo;
+    @Autowired
+    private ReclaRepo reclaRepo;
+
     final RepositoryService repositoryService;
 
     public Estado CambiarEstado(Estado estado){
-       return ReclaRepo.CambiarEstado(estado);
+       return reclaRepo.CambiarEstado(estado);
     }
 
     @Programmatic
     public List<Reclamo> Listar(){
-        return ReclaRepo.findAll();
+        return reclaRepo.findAll();
     }
 }
