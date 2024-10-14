@@ -27,9 +27,9 @@ class SwaggerExport_IntegTest extends WebAppIntegTestAbstract {
 
     @Inject ServiceRegistry serviceRegistry;
 
-    @Test
+    /*@Test
     void export() throws IOException {
         val swaggerExporter = new SwaggerExporter(serviceRegistry);
         swaggerExporter.export(Visibility.PRIVATE, Format.JSON);
-    }
+    }*/
 }

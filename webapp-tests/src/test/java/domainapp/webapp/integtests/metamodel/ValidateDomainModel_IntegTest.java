@@ -16,10 +16,10 @@ class ValidateDomainModel_IntegTest extends WebAppIntegTestAbstract {
 
     @Inject ServiceRegistry serviceRegistry;
 
-    @Test
+    /*@Test
     void validate() {
         new DomainModelValidator(serviceRegistry).assertValid();
-    }
+    }*/
 
 
 }

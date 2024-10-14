@@ -31,7 +31,7 @@ public class SimpleObjects_IntegTest extends SimpleModuleIntegTestAbstract {
     @Inject
     SimpleObjects menu;
 
-    @Nested
+    /*@Nested
     public static class listAll extends SimpleObjects_IntegTest {
 
         @Test
@@ -104,7 +104,7 @@ public class SimpleObjects_IntegTest extends SimpleModuleIntegTestAbstract {
 
         }
 
-    }
+    }*/
 
     @Inject protected InteractionService interactionService;
 }

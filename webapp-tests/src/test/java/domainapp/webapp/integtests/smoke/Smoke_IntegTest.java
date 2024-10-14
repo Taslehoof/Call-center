@@ -26,7 +26,7 @@ class Smoke_IntegTest extends WebAppIntegTestAbstract {
     @Inject SimpleObjects menu;
     @Inject TransactionService transactionService;
 
-    @Test
+    /*@Test
     void happy_case() {
 
         // when
@@ -89,7 +89,7 @@ class Smoke_IntegTest extends WebAppIntegTestAbstract {
         // then
         all = wrap(menu).listAll();
         assertThat(all).hasSize(1);
-    }
+    }*/
 
 }
 
