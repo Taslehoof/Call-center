@@ -1,14 +1,7 @@
 package domainapp.modules.simple.dom.so.usuario;
 
-import domainapp.modules.simple.SimpleModule;
-import domainapp.modules.simple.types.Name;
-
-import jakarta.annotation.Priority;
-import jakarta.inject.Inject;
-
-import jakarta.inject.Named;
-
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+import java.util.regex.Pattern;
 
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
@@ -19,11 +12,16 @@ import org.apache.causeway.applib.annotation.PriorityPrecedence;
 import org.apache.causeway.applib.annotation.PromptStyle;
 import org.apache.causeway.applib.annotation.SemanticsOf;
 import org.apache.causeway.applib.services.repository.RepositoryService;
+import org.apache.causeway.persistence.jpa.applib.services.JpaSupportService;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 
-import java.util.List;
-import java.util.regex.Pattern;
+import domainapp.modules.simple.SimpleModule;
+import domainapp.modules.simple.types.Name;
+import jakarta.annotation.Priority;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.persistence.TypedQuery;
 
 //@Named(SimpleModule.NAMESPACE +".Usuarios")
 @Named(SimpleModule.NAMESPACE)
@@ -32,9 +30,8 @@ import java.util.regex.Pattern;
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
 public class Usuarios {
 
-    @Autowired
-    private UserRepo userRepo;
-
+    final UserRepo userRepo;
+    final JpaSupportService jpaSupportService;
     final RepositoryService repositoryService;
 
     @Action(semantics = SemanticsOf.SAFE)
@@ -42,15 +39,16 @@ public class Usuarios {
         return userRepo.findAll();
     }
 
-    public Usuario findByDniExact(int dni) {
-        return userRepo.findByDni(dni);
+    public Usuario findByDni(int dni) {
+        Usuario user = userRepo.findByDni(dni);
+        return user;
     }
 
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public List<Usuario> findByNombre(
-            @Name final String nombre){
-        return userRepo.findByNombreContais(nombre);
+    public List<Usuario> findByNombre(String nombre){
+        List<Usuario> listapersonas = userRepo.findByNombreContais(nombre);
+        return listapersonas;
     }
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
@@ -93,4 +91,17 @@ public class Usuarios {
             return repositoryService.persist(Usuario.withName(nombre));
     }
 
+
+    public void ping() {
+        jpaSupportService.getEntityManager(Usuario.class)
+                .mapEmptyToFailure()
+                .mapSuccessAsNullable(entityManager -> {
+                    final TypedQuery<Usuario> q = entityManager.createQuery(
+                                    "SELECT p FROM Usuario p ORDER BY p.name",
+                                    Usuario.class)
+                            .setMaxResults(1);
+                    return q.getResultList();
+                })
+                .ifFailureFail();
+    }
 }

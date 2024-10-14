@@ -1,27 +1,6 @@
 package domainapp.modules.simple.dom.so.reclamo;
 
-import domainapp.modules.simple.SimpleModule;
-import domainapp.modules.simple.dom.so.cuadrilla.Cuadrilla;
-import domainapp.modules.simple.dom.so.usuario.Usuario;
-
-import jakarta.inject.Inject;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedQueries;
-
-import jakarta.persistence.NamedQuery;
-
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
-
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NonNull;
-
-import lombok.Setter;
-
-import lombok.ToString;
+import java.time.LocalDate;
 
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
@@ -39,7 +18,25 @@ import org.apache.causeway.applib.annotation.Title;
 import org.apache.causeway.applib.services.message.MessageService;
 import org.apache.causeway.applib.services.repository.RepositoryService;
 import org.apache.causeway.applib.util.ObjectContracts;
-import java.time.LocalDate;
+
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
+import lombok.ToString;
+
+import domainapp.modules.simple.SimpleModule;
+import domainapp.modules.simple.dom.so.cuadrilla.Cuadrilla;
+import domainapp.modules.simple.dom.so.usuario.Usuario;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
 @Table(
@@ -63,6 +60,7 @@ import java.time.LocalDate;
                 +"ORDER BY nroReclamo ASC")*/
 })
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+@Named(SimpleModule.NAMESPACE + ".Reclamo")
 @ToString(onlyExplicitlyIncluded = true)
 @Getter @Setter
 public class Reclamo implements Comparable<Reclamo>{

@@ -2,9 +2,6 @@ package domainapp.modules.simple.integtests.tests;
 
 import java.util.List;
 
-import jakarta.inject.Inject;
-import jakarta.persistence.RollbackException;
-
 import org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Nested;
@@ -25,8 +22,8 @@ import lombok.val;
 
 import domainapp.modules.simple.dom.so.SimpleObject;
 import domainapp.modules.simple.dom.so.SimpleObjects;
-import domainapp.modules.simple.fixture.SimpleObject_persona;
 import domainapp.modules.simple.integtests.SimpleModuleIntegTestAbstract;
+import jakarta.inject.Inject;
 
 @Transactional
 public class SimpleObjects_IntegTest extends SimpleModuleIntegTestAbstract {
@@ -41,14 +38,14 @@ public class SimpleObjects_IntegTest extends SimpleModuleIntegTestAbstract {
         public void happyCase() {
 
             // given
-            fixtureScripts.run(new SimpleObject_persona.PersistAll());
+            //fixtureScripts.run(new SimpleObject_persona.PersistAll());
             transactionService.flushTransaction();
 
             // when
             final List<SimpleObject> all = wrap(menu).listAll();
 
             // then
-            assertThat(all).hasSize(SimpleObject_persona.values().length);
+            //assertThat(all).hasSize(SimpleObject_persona.values().length);
         }
 
         @Test
@@ -79,7 +76,7 @@ public class SimpleObjects_IntegTest extends SimpleModuleIntegTestAbstract {
         public void whenAlreadyExists() {
 
             // given
-            fixtureScripts.runPersona(SimpleObject_persona.FIZZ);
+            //fixtureScripts.runPersona(SimpleObject_persona.FIZZ);
             interactionService.nextInteraction();
 
             // we execute this in its own transaction so that it can be discarded

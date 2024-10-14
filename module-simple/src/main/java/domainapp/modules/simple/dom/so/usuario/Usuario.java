@@ -1,36 +1,15 @@
 package domainapp.modules.simple.dom.so.usuario;
 
-import domainapp.modules.simple.SimpleModule;
-import domainapp.modules.simple.dom.so.reclamo.Estado;
-import domainapp.modules.simple.dom.so.reclamo.Reclamo;
-import domainapp.modules.simple.dom.so.reclamo.TipoReclamo;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-import jakarta.inject.Inject;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-
-import jakarta.persistence.UniqueConstraint;
-
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.val;
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
 import org.apache.causeway.applib.annotation.BookmarkPolicy;
 import org.apache.causeway.applib.annotation.Collection;
 import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
-import org.apache.causeway.applib.annotation.DomainService;
 import org.apache.causeway.applib.annotation.Editing;
 import org.apache.causeway.applib.annotation.ParameterLayout;
 import org.apache.causeway.applib.annotation.Property;
@@ -39,9 +18,27 @@ import org.apache.causeway.applib.services.factory.FactoryService;
 import org.apache.causeway.applib.services.repository.RepositoryService;
 import org.apache.causeway.applib.util.ObjectContracts;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.val;
+
+import domainapp.modules.simple.SimpleModule;
+import domainapp.modules.simple.dom.so.reclamo.Estado;
+import domainapp.modules.simple.dom.so.reclamo.Reclamo;
+import domainapp.modules.simple.dom.so.reclamo.TipoReclamo;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
 @Table(
@@ -62,6 +59,7 @@ import java.util.List;
                 + "ORDER BY dni ASC")
 })
 @DomainObject(editing = Editing.DISABLED)
+@Named(SimpleModule.NAMESPACE + ".Usuario")
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
 //@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = SimpleModule.SCHEMA)

@@ -1,20 +1,18 @@
 package domainapp.modules.simple.dom.so.reclamo;
 
-import domainapp.modules.simple.SimpleModule;
-
-import jakarta.annotation.Priority;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 import org.apache.causeway.applib.annotation.DomainService;
 import org.apache.causeway.applib.annotation.PriorityPrecedence;
 import org.apache.causeway.applib.annotation.Programmatic;
 import org.apache.causeway.applib.services.repository.RepositoryService;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 
-import java.util.List;
+import domainapp.modules.simple.SimpleModule;
+import jakarta.annotation.Priority;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 //@Named(SimpleModule.NAMESPACE+".Reclamos")
 @Named(SimpleModule.NAMESPACE)
@@ -23,9 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
 public class Reclamos {
 
-    @Autowired
-    private ReclaRepo reclaRepo;
-
+    final ReclaRepo reclaRepo;
     final RepositoryService repositoryService;
 
     public Estado CambiarEstado(Estado estado){

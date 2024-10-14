@@ -1,12 +1,12 @@
 package domainapp.modules.simple.dom.so.usuario;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.util.List;
 
-public interface UserRepo extends JpaRepository<Usuario,Long> {
+import org.springframework.data.jpa.repository.JpaRepository;
 
-    Usuario findByDni(final int dni);
+public interface UserRepo extends JpaRepository<Usuario, Long> {
 
     List<Usuario> findByNombreContais(final String nombre);
+
+    Usuario findByDni(final int dni);
 }

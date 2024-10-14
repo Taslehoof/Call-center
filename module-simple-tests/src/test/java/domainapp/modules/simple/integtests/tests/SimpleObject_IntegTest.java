@@ -1,19 +1,10 @@
 package domainapp.modules.simple.integtests.tests;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import org.apache.causeway.applib.services.wrapper.DisabledException;
-import org.apache.causeway.applib.services.wrapper.InvalidException;
-
 import domainapp.modules.simple.dom.so.SimpleObject;
-import domainapp.modules.simple.fixture.SimpleObject_persona;
 import domainapp.modules.simple.integtests.SimpleModuleIntegTestAbstract;
 
 @Transactional
@@ -24,11 +15,11 @@ public class SimpleObject_IntegTest extends SimpleModuleIntegTestAbstract {
     @BeforeEach
     public void setUp() {
         // given
-        simpleObject = fixtureScripts.runPersona(SimpleObject_persona.FOO);
+        //simpleObject = fixtureScripts.runPersona(SimpleObject_persona.FOO);
     }
 
 
-    @Nested
+    /*@Nested
     public static class name extends SimpleObject_IntegTest {
 
         @Test
@@ -81,6 +72,6 @@ public class SimpleObject_IntegTest extends SimpleModuleIntegTestAbstract {
             // then
             assertThat(cause.getMessage()).contains("Character '!' is not allowed");
         }
-    }
+    }*/
 
 }

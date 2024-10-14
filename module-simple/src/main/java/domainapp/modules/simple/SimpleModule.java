@@ -14,8 +14,6 @@ import org.apache.causeway.testing.fixtures.applib.fixturescripts.FixtureScript;
 import org.apache.causeway.testing.fixtures.applib.modules.ModuleWithFixtures;
 import org.apache.causeway.testing.fixtures.applib.teardown.jpa.TeardownFixtureJpaAbstract;
 
-import domainapp.modules.simple.dom.so.SimpleObject;
-
 @Configuration
 @Import({
         CausewayModuleExtPdfjsApplib.class,
@@ -38,7 +36,7 @@ public class SimpleModule implements ModuleWithFixtures {
         return new TeardownFixtureJpaAbstract() {
             @Override
             protected void execute(ExecutionContext executionContext) {
-                deleteFrom(SimpleObject.class);
+                //deleteFrom(SimpleObject.class);
             }
         };
     }
