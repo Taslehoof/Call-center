@@ -28,8 +28,8 @@ public class SimpleModule implements ModuleWithFixtures {
 
     //public static final String NAMESPACE = "simple";
     //public static final String SCHEMA = "simple";
-    public static final String NAMESPACE = "reclamos";
-    public static final String SCHEMA = "reclamos";
+    public static final String NAMESPACE = "Reclamos";
+    public static final String SCHEMA = "Reclamos";
 
     @Override
     public FixtureScript getTeardownFixture() {

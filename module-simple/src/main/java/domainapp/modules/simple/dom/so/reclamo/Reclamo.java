@@ -60,7 +60,8 @@ import jakarta.persistence.UniqueConstraint;
                 +"ORDER BY nroReclamo ASC")*/
 })
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-@Named(SimpleModule.NAMESPACE + ".Reclamo")
+//@Named(SimpleModule.NAMESPACE + ".reclamos")
+@Named(SimpleModule.NAMESPACE)
 @ToString(onlyExplicitlyIncluded = true)
 @Getter @Setter
 public class Reclamo implements Comparable<Reclamo>{
