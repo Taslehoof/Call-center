@@ -243,8 +243,7 @@
     </dependencies>
 
     <profiles>
-
-        <profile>
+        <!--<profile>
             <id>jdbc-sqlserver</id>
             <activation>
                 <property>
@@ -261,7 +260,7 @@
             </dependencies>
         </profile>
 
-        <!--<profile>
+        <profile>
             <id>jdbc-mariadb</id>
             <activation>
                 <property>

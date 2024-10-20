@@ -39,15 +39,15 @@ public class Usuarios {
         return userRepo.findAll();
     }
 
-    public Usuario findByDni(int dni) {
-        Usuario user = userRepo.findByDni(dni);
+    public Usuario findDni(int dni) {
+        Usuario user = userRepo.findDni(dni);
         return user;
     }
 
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public List<Usuario> findByNombre(String nombre){
-        List<Usuario> listapersonas = userRepo.findByNombreContais(nombre);
+    public List<Usuario> findNombre(String nombre){
+        List<Usuario> listapersonas = userRepo.findNombreContais(nombre);
         return listapersonas;
     }
 

@@ -63,7 +63,6 @@ import jakarta.persistence.UniqueConstraint;
 @Named(SimpleModule.NAMESPACE)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
-//@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = SimpleModule.SCHEMA)
 @Getter @Setter
 public class Usuario implements Comparable<Usuario>{
 
@@ -143,13 +142,13 @@ public class Usuario implements Comparable<Usuario>{
     @Action
     @ActionLayout(named = "Cargar reclamo")
     public Usuario addReclamo(@ParameterLayout(named = "Tipo de Reclamo") final TipoReclamo tipoReclamo){
-        final Reclamo reclamo = factoryService.create(Reclamo.class);
+        final Reclamo recla = factoryService.create(Reclamo.class);
         //reclamo.setUsuario(this);
-        reclamo.setDireccion(this.direccion);
-        reclamo.setFecha(LocalDate.now());
-        reclamo.setTipoReclamo(tipoReclamo);
-        reclamo.setEstado(Estado.Sin_Asignar);
-        getReclamo().add(reclamo);
+        recla.setDireccion(this.direccion);
+        recla.setFecha(LocalDate.now());
+        recla.setTipoReclamo(tipoReclamo);
+        recla.setEstado(Estado.Sin_Asignar);
+        getReclamo().add(recla);
         repositoryService.persist(reclamo);
         return this;
     }

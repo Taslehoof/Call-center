@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepo extends JpaRepository<Usuario, Long> {
 
-    List<Usuario> findByNombreContais(final String nombre);
+    List<Usuario> findNombreContais(final String nombre);
 
-    Usuario findByDni(final int dni);
+    Usuario findDni(final int dni);
 }
