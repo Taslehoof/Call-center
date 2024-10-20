@@ -35,7 +35,7 @@ public class Usuarios {
     final RepositoryService repositoryService;
 
     @Action(semantics = SemanticsOf.SAFE)
-    public List<Usuario> Listar(){
+    public List<Usuario> List(){
         return userRepo.findAll();
     }
 

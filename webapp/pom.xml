@@ -235,6 +235,11 @@
             <artifactId>sql-formatter</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>1.5.7</version>
+        </dependency>
     </dependencies>
 
     <profiles>
@@ -256,6 +261,22 @@
             </dependencies>
         </profile>
 
+        <!--<profile>
+            <id>jdbc-mariadb</id>
+            <activation>
+                <property>
+                    <name>spring.profiles.active</name>
+                    <value>MARIASQL</value>
+                </property>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.mariadb.jdbc</groupId>
+                    <artifactId>mariadb-java-client</artifactId>
+                    <version>1.5.7</version>
+                </dependency>
+            </dependencies>
+        </profile>-->
         <profile>
             <id>jdbc-postgresql</id>
             <activation>
