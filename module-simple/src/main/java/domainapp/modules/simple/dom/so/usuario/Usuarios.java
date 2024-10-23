@@ -24,7 +24,6 @@ import jakarta.inject.Named;
 import jakarta.persistence.TypedQuery;
 
 //@Named(SimpleModule.NAMESPACE +".Usuarios")
-@Named(SimpleModule.NAMESPACE)
 @DomainService
 @Priority(PriorityPrecedence.EARLY)
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
@@ -39,14 +38,14 @@ public class Usuarios {
         return userRepo.findAll();
     }
 
-    public Usuario findDni(int dni) {
+    public Usuario findByDni(String dni) {
         Usuario user = userRepo.findDni(dni);
         return user;
     }
 
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public List<Usuario> findNombre(String nombre){
+    public List<Usuario> findByNombre(String nombre){
         List<Usuario> listapersonas = userRepo.findNombreContais(nombre);
         return listapersonas;
     }
@@ -56,7 +55,7 @@ public class Usuarios {
     public Usuario create(
             @Parameter(maxLength = 8)
             @ParameterLayout(named = "DNI: ")
-            final int dni,
+            final String dni,
 
             @Parameter(maxLength = 40)
             @Name

@@ -8,5 +8,5 @@ public interface UserRepo extends JpaRepository<Usuario, Long> {
 
     List<Usuario> findNombreContais(final String nombre);
 
-    Usuario findDni(final int dni);
+    Usuario findDni(final String dni);
 }

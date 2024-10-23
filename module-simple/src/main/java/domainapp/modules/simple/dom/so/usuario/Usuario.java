@@ -45,33 +45,32 @@ import jakarta.persistence.UniqueConstraint;
         schema = SimpleModule.SCHEMA,
         uniqueConstraints = {@UniqueConstraint(name = "Usuario_dni_UNQ", columnNames = {"dni"})}
 )
-@NamedQueries({
+/*@NamedQueries({
         @NamedQuery(
                 name= Usuario.FIND,
                 query = "SELECT "
-                + "FROM domainapp.modules.simple.dom.so.usuario.Usuario"
+                + "FROM domainapp.modules.simple.dom.so.usuario.Usuario "
                 + "ORDER BY nombre ASC"),
         @NamedQuery(
                 name= Usuario.FIND_BY_NRO_RECLAMO,
                 query = "SELECT "
-                + "FROM domainapp.modules.simple.dom.so.usuario.Usuario"
-                + "WHERE dni == :dni"
+                + "FROM domainapp.modules.simple.dom.so.usuario.Usuario "
+                + "WHERE dni == :dni "
                 + "ORDER BY dni ASC")
-})
+})*/
 @DomainObject(editing = Editing.DISABLED)
 //@Named(SimpleModule.NAMESPACE + ".usuario")
-@Named(SimpleModule.NAMESPACE)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
 @Getter @Setter
 public class Usuario implements Comparable<Usuario>{
 
-    static final String FIND = "Usuario.find";
-    static final String FIND_BY_NRO_RECLAMO= "Usuario.findByNroReclamo";
+    //static final String FIND = "Usuario.find";
+    //static final String FIND_BY_NRO_RECLAMO= "Usuario.findByNroReclamo";
 
     @Id
     @Column(nullable = true, length = 8)
-    private int dni;
+    private String dni;
 
     @Column(nullable = true, length = 40)
     @Title
@@ -97,7 +96,7 @@ public class Usuario implements Comparable<Usuario>{
     @OneToOne
     @JoinColumn(name = "reclamo_nroReclamo", referencedColumnName = "nroReclamo")
     @Collection
-    private List<Reclamo> reclamo = new ArrayList<Reclamo>();
+    private List<Reclamo> reclamos = new ArrayList<Reclamo>();
 
     public static Usuario withName(final String nombre){
         val usuario = new Usuario();
@@ -105,7 +104,7 @@ public class Usuario implements Comparable<Usuario>{
         return usuario;
     }
 
-    public int RepoDni(){return this.dni;}
+    public String RepoDni(){return this.dni;}
     public String RepoNombre(){return this.nombre;}
     public String RepoApellido(){return this.apellido;}
     public String RepoDireccion(){return this.direccion;}
@@ -113,7 +112,7 @@ public class Usuario implements Comparable<Usuario>{
 
     public Usuario(){}
 
-    public Usuario(int dni, String nombre, String apellido, String direccion, String email, int telefono) {
+    public Usuario(String dni, String nombre, String apellido, String direccion, String email, int telefono) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -122,17 +121,17 @@ public class Usuario implements Comparable<Usuario>{
         this.telefono = telefono;
     }
 
-    public Usuario(int dni, String nombre, String apellido, String direccion, String email, int telefono, List<Reclamo> reclamo) {
+    public Usuario(String dni, String nombre, String apellido, String direccion, String email, int telefono, List<Reclamo> reclamos) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
         this.email = email;
         this.telefono = telefono;
-        this.reclamo = reclamo;
+        this.reclamos = reclamos;
     }
 
-    public int default0Update(){return getDni();}
+    public String default0Update(){return getDni();}
     public String default1Update(){return getNombre();}
     public String default2Update(){return getApellido();}
     public String default3Update(){return getDireccion();}
@@ -148,7 +147,7 @@ public class Usuario implements Comparable<Usuario>{
         reclamo.setFecha(LocalDate.now());
         reclamo.setTipoReclamo(tipoReclamo);
         reclamo.setEstado(Estado.Sin_Asignar);
-        getReclamo().add(reclamo);
+        getReclamos().add(reclamo);
         repositoryService.persist(reclamo);
         return this;
     }

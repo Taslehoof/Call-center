@@ -15,7 +15,6 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 //@Named(SimpleModule.NAMESPACE+".Reclamos")
-@Named(SimpleModule.NAMESPACE)
 @DomainService
 @Priority(PriorityPrecedence.EARLY)
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
