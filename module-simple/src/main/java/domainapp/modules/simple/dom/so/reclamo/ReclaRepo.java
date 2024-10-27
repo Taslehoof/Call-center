@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ReclaRepo  extends JpaRepository<Reclamo, Long> {
 
-    List<Reclamo> Listar(final String reclamo);
+    //List<Reclamo> Listar(final String reclamo);
 
-    Estado CambiarEstado(Estado estado);
+    //Reclamo CambiarEstado(Estado estado);
 }

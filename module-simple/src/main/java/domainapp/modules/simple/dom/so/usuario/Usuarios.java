@@ -9,6 +9,7 @@ import org.apache.causeway.applib.annotation.DomainService;
 import org.apache.causeway.applib.annotation.Parameter;
 import org.apache.causeway.applib.annotation.ParameterLayout;
 import org.apache.causeway.applib.annotation.PriorityPrecedence;
+import org.apache.causeway.applib.annotation.Programmatic;
 import org.apache.causeway.applib.annotation.PromptStyle;
 import org.apache.causeway.applib.annotation.SemanticsOf;
 import org.apache.causeway.applib.services.repository.RepositoryService;
@@ -39,16 +40,16 @@ public class Usuarios {
     }
 
     public Usuario findByDni(String dni) {
-        Usuario user = userRepo.findDni(dni);
+        Usuario user = userRepo.findByDni(dni);
         return user;
     }
 
-    @Action(semantics = SemanticsOf.SAFE)
+    /*@Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
-    public List<Usuario> findByNombre(String nombre){
+    public List<Usuario> findByNombre(@Name final String nombre){
         List<Usuario> listapersonas = userRepo.findNombreContais(nombre);
         return listapersonas;
-    }
+    }*/
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
@@ -90,6 +91,20 @@ public class Usuarios {
             return repositoryService.persist(Usuario.withName(nombre));
     }
 
+    @Programmatic
+    public Usuario findOrCreate(
+            final String dni,
+            final String nombre,
+            final String apellido,
+            final String direccion,
+            final String email,
+            final int telefono){
+        Usuario usuario =  userRepo.findByDni(dni);
+        if (usuario == null){
+            usuario =create(dni,nombre, apellido, direccion, email, telefono);
+        }
+        return usuario;
+    }
 
     public void ping() {
         jpaSupportService.getEntityManager(Usuario.class)

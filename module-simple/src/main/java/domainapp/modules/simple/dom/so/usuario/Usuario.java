@@ -90,7 +90,7 @@ public class Usuario implements Comparable<Usuario>{
 
     @Column(nullable = true, length = 19)
     @Property
-    private int telefono;
+    private String telefono;
 
     //@Persistent(mappedBy = "usuario", dependentElement = "true")
     @OneToOne
@@ -108,11 +108,11 @@ public class Usuario implements Comparable<Usuario>{
     public String RepoNombre(){return this.nombre;}
     public String RepoApellido(){return this.apellido;}
     public String RepoDireccion(){return this.direccion;}
-    public int RepoTelefono(){return this.telefono;}
+    public String RepoTelefono(){return this.telefono;}
 
     public Usuario(){}
 
-    public Usuario(String dni, String nombre, String apellido, String direccion, String email, int telefono) {
+    public Usuario(String dni, String nombre, String apellido, String direccion, String email, String telefono) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -121,7 +121,7 @@ public class Usuario implements Comparable<Usuario>{
         this.telefono = telefono;
     }
 
-    public Usuario(String dni, String nombre, String apellido, String direccion, String email, int telefono, List<Reclamo> reclamos) {
+    public Usuario(String dni, String nombre, String apellido, String direccion, String email, String telefono, List<Reclamo> reclamos) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -136,7 +136,7 @@ public class Usuario implements Comparable<Usuario>{
     public String default2Update(){return getApellido();}
     public String default3Update(){return getDireccion();}
     public String default4Update(){return getEmail();}
-    public int default5Update(){return getTelefono();}
+    public String default5Update(){return getTelefono();}
 
     @Action
     @ActionLayout(named = "Cargar reclamo")
