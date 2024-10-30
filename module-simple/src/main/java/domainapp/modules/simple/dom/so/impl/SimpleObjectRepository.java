@@ -1,6 +1,8 @@
-package domainapp.modules.simple.dom.so;
+package domainapp.modules.simple.dom.so.impl;
 
 import java.util.List;
+
+import domainapp.modules.simple.dom.so.SimpleObject;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

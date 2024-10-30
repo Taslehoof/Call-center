@@ -1,5 +1,7 @@
 package domainapp.modules.simple.dom.so;
 
+import domainapp.modules.simple.dom.so.impl.SimpleObjectRepository;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -13,7 +15,8 @@ class SimpleObjects_Test {
 
     @Mock RepositoryService mockRepositoryService;
     @Mock JpaSupportService mockJpaSupportService;
-    @Mock SimpleObjectRepository mockSimpleObjectRepository;
+    @Mock
+    SimpleObjectRepository mockSimpleObjectRepository;
 
     SimpleObjects objects;
 

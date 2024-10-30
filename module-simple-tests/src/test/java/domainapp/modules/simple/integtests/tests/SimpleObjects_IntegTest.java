@@ -1,26 +1,12 @@
 package domainapp.modules.simple.integtests.tests;
 
-import java.util.List;
-
-import org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException;
-import org.hamcrest.MatcherAssert;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.springframework.dao.DuplicateKeyException;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import org.apache.causeway.applib.services.iactnlayer.InteractionService;
-import org.apache.causeway.commons.functional.Try;
-import org.apache.causeway.testing.unittestsupport.applib.matchers.ThrowableMatchers;
 
-import lombok.val;
-
-import domainapp.modules.simple.dom.so.SimpleObject;
 import domainapp.modules.simple.dom.so.SimpleObjects;
 import domainapp.modules.simple.integtests.SimpleModuleIntegTestAbstract;
 import jakarta.inject.Inject;

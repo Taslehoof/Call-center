@@ -26,10 +26,10 @@ import org.apache.causeway.testing.fixtures.applib.teardown.jpa.TeardownFixtureJ
 @EntityScan(basePackageClasses = {SimpleModule.class})
 public class SimpleModule implements ModuleWithFixtures {
 
-    public static final String NAMESPACE = "simple";
-    public static final String SCHEMA = "simple";
-    //public static final String NAMESPACE = "reclamos";
-    //public static final String SCHEMA = "reclamos";
+    //public static final String NAMESPACE = "simple";
+    //public static final String SCHEMA = "simple";
+    public static final String NAMESPACE = "reclamos";
+    public static final String SCHEMA = "reclamos";
 
     @Override
     public FixtureScript getTeardownFixture() {
