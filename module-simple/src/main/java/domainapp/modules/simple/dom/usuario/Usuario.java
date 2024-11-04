@@ -1,4 +1,4 @@
-package domainapp.modules.simple.dom.so.usuario;
+package domainapp.modules.simple.dom.usuario;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -25,17 +25,14 @@ import lombok.ToString;
 import lombok.val;
 
 import domainapp.modules.simple.SimpleModule;
-import domainapp.modules.simple.dom.so.reclamo.Estado;
-import domainapp.modules.simple.dom.so.reclamo.Reclamo;
-import domainapp.modules.simple.dom.so.reclamo.TipoReclamo;
+import domainapp.modules.simple.dom.reclamo.Estado;
+import domainapp.modules.simple.dom.reclamo.Reclamo;
+import domainapp.modules.simple.dom.reclamo.TipoReclamo;
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;

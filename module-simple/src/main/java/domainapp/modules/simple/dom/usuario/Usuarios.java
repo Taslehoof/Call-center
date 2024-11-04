@@ -1,4 +1,4 @@
-package domainapp.modules.simple.dom.so.usuario;
+package domainapp.modules.simple.dom.usuario;
 
 import java.util.List;
 import java.util.regex.Pattern;
@@ -17,11 +17,9 @@ import org.apache.causeway.persistence.jpa.applib.services.JpaSupportService;
 
 import lombok.RequiredArgsConstructor;
 
-import domainapp.modules.simple.SimpleModule;
 import domainapp.modules.simple.types.Name;
 import jakarta.annotation.Priority;
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import jakarta.persistence.TypedQuery;
 
 //@Named(SimpleModule.NAMESPACE +".Usuarios")

@@ -2,7 +2,6 @@ package domainapp.modules.simple.dom.so;
 
 import java.util.List;
 
-import domainapp.modules.simple.dom.so.impl.SimpleObjectRepository;
 import jakarta.annotation.Priority;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;

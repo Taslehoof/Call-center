@@ -1,12 +1,12 @@
 package domainapp.webapp.application.services.health;
 
+import domainapp.modules.simple.dom.usuario.Usuarios;
 import org.springframework.stereotype.Service;
 
 import org.apache.causeway.applib.services.health.Health;
 import org.apache.causeway.applib.services.health.HealthCheckService;
 
 import domainapp.modules.simple.dom.so.SimpleObjects;
-import domainapp.modules.simple.dom.so.usuario.*;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 

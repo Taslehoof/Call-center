@@ -1,7 +1,5 @@
 package domainapp.modules.simple.dom.so;
 
-import domainapp.modules.simple.dom.so.impl.SimpleObjectRepository;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;

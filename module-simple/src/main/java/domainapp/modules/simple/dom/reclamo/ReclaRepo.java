@@ -1,8 +1,6 @@
-package domainapp.modules.simple.dom.so.reclamo;
+package domainapp.modules.simple.dom.reclamo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 public interface ReclaRepo  extends JpaRepository<Reclamo, Long> {
 

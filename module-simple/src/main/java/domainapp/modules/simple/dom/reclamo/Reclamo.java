@@ -1,4 +1,4 @@
-package domainapp.modules.simple.dom.so.reclamo;
+package domainapp.modules.simple.dom.reclamo;
 
 import java.time.LocalDate;
 
@@ -26,15 +26,12 @@ import lombok.Setter;
 import lombok.ToString;
 
 import domainapp.modules.simple.SimpleModule;
-import domainapp.modules.simple.dom.so.cuadrilla.Cuadrilla;
-import domainapp.modules.simple.dom.so.usuario.Usuario;
+import domainapp.modules.simple.dom.cuadrilla.Cuadrilla;
+import domainapp.modules.simple.dom.usuario.Usuario;
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 

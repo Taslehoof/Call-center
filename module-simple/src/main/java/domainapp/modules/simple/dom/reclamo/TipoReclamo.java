@@ -1,4 +1,4 @@
-package domainapp.modules.simple.dom.so.reclamo;
+package domainapp.modules.simple.dom.reclamo;
 
 public enum TipoReclamo {
     Falta_de_agua,

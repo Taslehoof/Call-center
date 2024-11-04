@@ -1,4 +1,4 @@
-package domainapp.modules.simple.dom.so.reclamo;
+package domainapp.modules.simple.dom.reclamo;
 
 import java.util.List;
 
@@ -9,10 +9,8 @@ import org.apache.causeway.applib.services.repository.RepositoryService;
 
 import lombok.RequiredArgsConstructor;
 
-import domainapp.modules.simple.SimpleModule;
 import jakarta.annotation.Priority;
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 
 //@Named(SimpleModule.NAMESPACE+".Reclamos")
 @DomainService
