@@ -43,7 +43,7 @@ causeway:
           password: "pass"
           role-name: "causeway-ext-secman-admin"
           namespace-permissions:
-            sticky: "simple"
+            sticky: "reclamos"
 #            additional: ...
         regular-user:
           role-name: "causeway-ext-secman-user"
