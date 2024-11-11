@@ -240,6 +240,12 @@
             <artifactId>mariadb-java-client</artifactId>
             <version>1.5.7</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-core</artifactId>
+            <version>10.2.0</version>
+        </dependency>
     </dependencies>
 
     <profiles>
@@ -285,11 +291,11 @@
                 </property>
             </activation>
             <dependencies>
-                <dependency>
+                <!--<dependency>
                     <groupId>org.postgresql</groupId>
                     <artifactId>postgresql</artifactId>
-                    <!-- <version>42.2.12</version> ... version already managed -->
-                </dependency>
+                    <version>42.2.12</version> ... version already managed
+                </dependency>-->
             </dependencies>
         </profile>
 
