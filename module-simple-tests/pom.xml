@@ -36,7 +36,6 @@
     </build>
 
     <dependencies>
-
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>simpleapp-jpa-module-simple</artifactId>
@@ -73,7 +72,5 @@
             <artifactId>causeway-persistence-jpa-eclipselink</artifactId>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
-
 </project>
