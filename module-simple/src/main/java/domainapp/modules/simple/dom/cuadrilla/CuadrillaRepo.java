@@ -1,5 +1,8 @@
 package domainapp.modules.simple.dom.cuadrilla;
 
+import domainapp.modules.simple.dom.ayudante.Ayudante;
+import domainapp.modules.simple.dom.tecnico.Tecnico;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
