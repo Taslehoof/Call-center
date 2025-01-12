@@ -21,9 +21,9 @@ public class Reclamos {
     final ReclaRepo reclaRepo;
     final RepositoryService repositoryService;
 
-    /*public Reclamo CambiarEstado(Estado estado){
+    public Reclamo CambiarEstado(Estado estado){
        return reclaRepo.CambiarEstado(estado);
-    }*/
+    }
 
     @Programmatic
     public List<Reclamo> Listar(){

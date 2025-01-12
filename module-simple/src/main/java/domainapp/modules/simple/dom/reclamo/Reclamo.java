@@ -100,10 +100,10 @@ public class Reclamo implements Comparable<Reclamo>{
     @Property(editing = Editing.DISABLED)
     private Estado estado;
 
-/*    @Column(nullable = true, name = "cuadrilla_asig_id")
+    @Column(nullable = true, name = "cuadrilla_asig_id")
     @Property
     @PropertyLayout(named = "Cuadrilla")
-    private Cuadrilla cuadrilla;*/
+    private Cuadrilla cuadrilla;
 
     public Reclamo() {
     }

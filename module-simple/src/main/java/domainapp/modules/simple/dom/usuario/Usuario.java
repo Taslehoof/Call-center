@@ -37,6 +37,8 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
+import org.springframework.data.annotation.Persistent;
+
 @Entity
 @Table(
         schema = SimpleModule.SCHEMA,
@@ -62,8 +64,8 @@ import jakarta.persistence.UniqueConstraint;
 @Getter @Setter
 public class Usuario implements Comparable<Usuario>{
 
-    //static final String FIND = "Usuario.find";
-    //static final String FIND_BY_NRO_RECLAMO= "Usuario.findByNroReclamo";
+    static final String FIND = "Usuario.find";
+    static final String FIND_BY_NRO_RECLAMO= "Usuario.findByNroReclamo";
 
     @Id
     @Column(nullable = true, length = 8)

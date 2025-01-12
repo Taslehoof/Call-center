@@ -3,6 +3,8 @@ package domainapp.modules.simple.dom.usuario;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import jakarta.inject.Named;
+
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
 import org.apache.causeway.applib.annotation.DomainService;
@@ -33,8 +35,8 @@ public class Usuarios {
     final RepositoryService repositoryService;
 
     @Action(semantics = SemanticsOf.SAFE)
-    public List<Usuario> List(){
-        return userRepo.findAll();
+    public List<Usuario> List(@Named final String nombre){
+        return userRepo.Listar(Usuario.withName(nombre));
     }
 
     public Usuario findByDni(String dni) {

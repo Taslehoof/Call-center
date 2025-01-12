@@ -20,7 +20,10 @@ import org.apache.causeway.applib.annotation.BookmarkPolicy;
 import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
 import org.apache.causeway.applib.annotation.Editing;
+import org.apache.causeway.applib.annotation.Property;
 import org.apache.causeway.applib.util.ObjectContracts;
+
+import org.springframework.data.annotation.Persistent;
 
 import javax.persistence.metamodel.IdentifiableType;
 
@@ -38,10 +41,21 @@ import java.util.List;
 @Getter @Setter
 public class Cuadrilla implements Comparable<Cuadrilla>{
 
-    @Column(allowsNull ="")
+    @Column(nullable = false,length = 40)
+    @Property
     private String nombre;
+
+    @Column(nullable = false,length = 40)
+    @Property
     private Tecnico tecnico;
+
+    @Column(nullable=false)
+    @Property
     private Ayudante ayudante;
+
+    //@Persistent(mappedBy="cuadrillaAsignada",defaultFetchGroup= "true")
+    @Column(nullable =false)
+    @Property
     private List<Reclamo> reclamosAsignados;
 
     public Cuadrilla(){}
