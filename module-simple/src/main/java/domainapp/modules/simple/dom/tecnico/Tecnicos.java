@@ -23,8 +23,8 @@ public class Tecnicos {
     //@Action(semantics = SemanticsOf.SAFE)
     @Programmatic
     public List<Tecnico> Listar(@Named final String nombre){
+            return tecRepo.findAll();
 
-        return repositoryService.allMatches(new Query<>(Tecnico.class, "find"));
 
     }
 
