@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TecRepo extends JpaRepository<Tecnico, Long> {
 
-    List<Tecnico> Listar(final Tecnico nombre);
 
-    Tecnico findByDni(final int dni);
+    Tecnico findDni(final int dni);
+
 }

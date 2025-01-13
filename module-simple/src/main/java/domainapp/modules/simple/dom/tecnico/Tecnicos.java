@@ -3,10 +3,14 @@ package domainapp.modules.simple.dom.tecnico;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import org.apache.causeway.applib.annotation.Action;
+import org.apache.causeway.applib.annotation.Programmatic;
 import org.apache.causeway.applib.annotation.SemanticsOf;
+import org.apache.causeway.applib.services.repository.RepositoryService;
+import org.apache.causeway.applib.query.Query;
 
 import java.util.List;
 
@@ -14,9 +18,18 @@ import java.util.List;
 public class Tecnicos {
 
     final TecRepo tecRepo;
+    final RepositoryService repositoryService;
 
-    @Action(semantics = SemanticsOf.SAFE)
+    //@Action(semantics = SemanticsOf.SAFE)
+    @Programmatic
     public List<Tecnico> Listar(@Named final String nombre){
-        return tecRepo.Listar(Tecnico.withName(nombre));
+
+        return repositoryService.allMatches(new Query<>(Tecnico.class, "find"));
+
+    }
+
+    @Action()
+    public Tecnico findByDni(final int dni){
+        return tecRepo.findDni(dni);
     }
 }
