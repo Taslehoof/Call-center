@@ -1,32 +1,27 @@
-package domainapp.modules.simple.dom.tecnico;
+package domainapp.modules.simple.dom.ayudante;
 
 import jakarta.inject.Inject;
+
 import jakarta.inject.Named;
 
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import org.apache.causeway.applib.annotation.Action;
-import org.apache.causeway.applib.annotation.Programmatic;
+import org.apache.causeway.applib.annotation.ActionLayout;
 import org.apache.causeway.applib.annotation.SemanticsOf;
 import org.apache.causeway.applib.services.repository.RepositoryService;
-import org.apache.causeway.applib.query.Query;
 
 import java.util.List;
 
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
-public class Tecnicos {
+public class Ayudantes {
 
-    final TecRepo tecRepo;
+    final AyudanteRepo ayundateRepo;
     final RepositoryService repositoryService;
 
     @Action(semantics = SemanticsOf.SAFE)
-    public List<Tecnico> ListAll(@Named final String nombre){
-            return tecRepo.findAll();
-    }
-
-    @Action()
-    public Tecnico findByDni(final int dni){
-        return tecRepo.findDni(dni);
+    @ActionLayout(named = "Listado de Ayundates")
+    public Ayudante findByDni( final int dni) {
+        return ayundateRepo.findByDni(dni);
     }
 }

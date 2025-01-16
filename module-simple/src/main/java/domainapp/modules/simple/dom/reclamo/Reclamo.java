@@ -2,6 +2,11 @@ package domainapp.modules.simple.dom.reclamo;
 
 import java.time.LocalDate;
 
+import jakarta.inject.Named;
+import jakarta.persistence.NamedQueries;
+
+import jakarta.persistence.NamedQuery;
+
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
 import org.apache.causeway.applib.annotation.BookmarkPolicy;
@@ -41,7 +46,7 @@ import jakarta.persistence.UniqueConstraint;
         uniqueConstraints ={ @UniqueConstraint(name="Reclamo_nroReclamo_UNQ", columnNames = {"nroReclamo"})
         }
 )
-/*@NamedQueries({
+@NamedQueries({
         @NamedQuery(
                 name = Reclamo.FIND,
                 query = "SELECT "),
@@ -55,23 +60,23 @@ import jakarta.persistence.UniqueConstraint;
                 +"FROM domainapp.modules.simple.dom.reclamo.Reclamo "
                 +" WHERE nroRclamos == :nroReclamo"
                 +"ORDER BY nroReclamo ASC")
-})*/
+})
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-//@Named(SimpleModule.NAMESPACE + ".reclamos")
+@Named(SimpleModule.NAMESPACE + ".reclamos")
 @ToString(onlyExplicitlyIncluded = true)
 @Getter @Setter
 public class Reclamo implements Comparable<Reclamo>{
 
-    //static final String FIND = "Reclamo.find";
-    //static final String FIND_LAST = "Reclamo.findLast";
-    //static final String FIND_BY_NRO_RECLAMO = "Reclamo.findByNroReclamo";
+    static final String FIND = "Reclamo.find";
+    static final String FIND_LAST = "Reclamo.findLast";
+    static final String FIND_BY_NRO_RECLAMO = "Reclamo.findByNroReclamo";
 
     @Column(nullable = true, length = 10)
     @Property(editing = Editing.DISABLED)
     @Id
     private String nroReclamo;
 
-   //@Column(nullable = false)
+   @Column(nullable = false)
     @NonNull
     @Property
     private Usuario usuario;
