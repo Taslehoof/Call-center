@@ -1,17 +1,12 @@
 package domainapp.modules.simple.dom.cuadrilla;
 
 import domainapp.modules.simple.SimpleModule;
-
 import domainapp.modules.simple.dom.ayudante.Ayudante;
 import domainapp.modules.simple.dom.tecnico.Tecnico;
 import jakarta.annotation.Priority;
-
 import jakarta.inject.Inject;
-
 import jakarta.inject.Named;
-
 import lombok.RequiredArgsConstructor;
-
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
 import org.apache.causeway.applib.annotation.DomainService;
@@ -21,11 +16,11 @@ import org.apache.causeway.applib.annotation.ParameterLayout;
 import org.apache.causeway.applib.annotation.PriorityPrecedence;
 import org.apache.causeway.applib.annotation.SemanticsOf;
 import org.apache.causeway.applib.services.repository.RepositoryService;
-
 import java.util.List;
 
 @Named(SimpleModule.NAMESPACE+".Cuadrillas")
-//@DomainService(nature = NatureOfService.VIEW)
+@DomainService
+
 @Priority(PriorityPrecedence.EARLY)
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
 public class Cuadrillas {
@@ -52,7 +47,7 @@ public class Cuadrillas {
         if (cuadrillaRepo.create() == true){
             return repositoryService.persist(Cuadrilla.create(nombre, tecnico, ayudante));
         } else {
-            return Cuadrilla.update(nombre, tecnico, ayudante);
+            return Cuadrilla.create(nombre, tecnico, ayudante);
         }
     }
 
@@ -72,7 +67,7 @@ public class Cuadrillas {
             @ParameterLayout(named = "Ayudante")
             final Ayudante ayudante){
 
-        return repositoryService.persist(Cuadrilla.update(nombre,tecnico,ayudante));
+        return repositoryService.persist(Cuadrilla.create(nombre,tecnico,ayudante));
     }
 
     @Action(semantics = SemanticsOf.SAFE)
@@ -81,10 +76,10 @@ public class Cuadrillas {
     }
 
     @ActionLayout(named = "Buscar cuadrilla")
-    public Cuadrilla findByNombre(
+    public Cuadrilla findByName(
             @Parameter(optionality = Optionality.MANDATORY)
             @ParameterLayout(named = "Por Nombre: ")
             final Cuadrilla nombre){
-        return nombre;
+        return cuadrillaRepo.findByNombre(nombre);
     }
 }

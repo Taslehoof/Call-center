@@ -1,5 +1,7 @@
 package domainapp.modules.simple.dom.ayudante;
 
+import domainapp.modules.simple.SimpleModule;
+import jakarta.annotation.Priority;
 import jakarta.inject.Inject;
 
 import jakarta.inject.Named;
@@ -8,11 +10,14 @@ import lombok.RequiredArgsConstructor;
 
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
+import org.apache.causeway.applib.annotation.DomainService;
+import org.apache.causeway.applib.annotation.PriorityPrecedence;
 import org.apache.causeway.applib.annotation.SemanticsOf;
 import org.apache.causeway.applib.services.repository.RepositoryService;
 
-import java.util.List;
-
+@Named(SimpleModule.NAMESPACE + ".ayudante")
+@DomainService
+@Priority(PriorityPrecedence.EARLY)
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
 public class Ayudantes {
 
