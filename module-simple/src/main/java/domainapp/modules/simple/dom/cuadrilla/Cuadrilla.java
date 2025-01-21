@@ -1,7 +1,5 @@
 package domainapp.modules.simple.dom.cuadrilla;
-
 import domainapp.modules.simple.SimpleModule;
-
 import domainapp.modules.simple.dom.ayudante.Ayudante;
 import domainapp.modules.simple.dom.reclamo.Reclamo;
 
@@ -22,10 +20,13 @@ import org.apache.causeway.applib.annotation.Editing;
 import org.apache.causeway.applib.annotation.Property;
 import org.apache.causeway.applib.util.ObjectContracts;
 
-import org.datanucleus.metadata.IdentityType;
-
-import org.springframework.data.annotation.Persistent;
-
+import javax.jdo.annotations.DatastoreIdentity;
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Version;
+import javax.jdo.annotations.VersionStrategy;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
@@ -64,7 +65,9 @@ import java.util.List;
 })
 @DomainObject(editing = Editing.DISABLED)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-//@PersistenceContext(identityType = IdentityType.DATASTORE, schema = SimpleModule.SCHEMA)
+@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = SimpleModule.SCHEMA)
+@DatastoreIdentity(strategy = IdGeneratorStrategy.IDENTITY, column = "id")
+@Version(strategy = VersionStrategy.VERSION_NUMBER, column = "version")
 @ToString(onlyExplicitlyIncluded = true)
 @Getter @Setter
 public class Cuadrilla implements Comparable<Cuadrilla>{
@@ -86,7 +89,7 @@ public class Cuadrilla implements Comparable<Cuadrilla>{
     @Property
     private Ayudante ayudante;
 
-    //@PersistenceUnit(mappedBy="cuadrillaAsignada",defaultFetchGroup= "true")
+    @Persistent(mappedBy = CuadrillaAsignada, defaultFetchGroup= "true")
     @Column(nullable =false)
     @Property
     private List<Reclamo> reclamosAsignados;

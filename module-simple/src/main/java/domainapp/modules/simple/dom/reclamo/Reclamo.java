@@ -108,7 +108,7 @@ public class Reclamo implements Comparable<Reclamo>{
     @Column(nullable = true, name = "cuadrilla_asig_id")
     @Property
     @PropertyLayout(named = "Cuadrilla")
-    private Cuadrilla cuadrilla;
+    private Cuadrilla cuadrillaAsignada;
 
     public Reclamo() {
     }

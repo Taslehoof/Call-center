@@ -20,7 +20,6 @@ import java.util.List;
 
 @Named(SimpleModule.NAMESPACE+".Cuadrillas")
 @DomainService
-
 @Priority(PriorityPrecedence.EARLY)
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
 public class Cuadrillas {
@@ -53,7 +52,7 @@ public class Cuadrillas {
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
     @ActionLayout(named = "Editar")
-    public Cuadrilla update(
+    public Cuadrilla create(
 
             @Parameter(maxLength = 40)
             @ParameterLayout(named = "Nombre")
