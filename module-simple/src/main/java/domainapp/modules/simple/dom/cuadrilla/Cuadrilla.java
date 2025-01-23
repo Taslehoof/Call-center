@@ -29,9 +29,6 @@ import javax.jdo.annotations.Version;
 import javax.jdo.annotations.VersionStrategy;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
-
 import java.util.List;
 
 @Entity
@@ -89,7 +86,7 @@ public class Cuadrilla implements Comparable<Cuadrilla>{
     @Property
     private Ayudante ayudante;
 
-    @Persistent(mappedBy = CuadrillaAsignada, defaultFetchGroup= "true")
+    @Persistent(mappedBy = "cuadrillaAsignada", defaultFetchGroup= "true")
     @Column(nullable =false)
     @Property
     private List<Reclamo> reclamosAsignados;

@@ -9,7 +9,9 @@ import jakarta.inject.Named;
 import lombok.RequiredArgsConstructor;
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
+import org.apache.causeway.applib.annotation.DomainObjectLayout;
 import org.apache.causeway.applib.annotation.DomainService;
+import org.apache.causeway.applib.annotation.DomainServiceLayout;
 import org.apache.causeway.applib.annotation.Optionality;
 import org.apache.causeway.applib.annotation.Parameter;
 import org.apache.causeway.applib.annotation.ParameterLayout;
@@ -20,6 +22,9 @@ import java.util.List;
 
 @Named(SimpleModule.NAMESPACE+".Cuadrillas")
 @DomainService
+@DomainServiceLayout(
+        named = ""
+)
 @Priority(PriorityPrecedence.EARLY)
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
 public class Cuadrillas {
@@ -29,7 +34,7 @@ public class Cuadrillas {
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
     @ActionLayout(named = "Crear Cuadrilla y Actualizar")
-    public Cuadrilla createUpdate(
+    public Cuadrillas createUpdate(
 
         @Parameter(maxLength = 40)
         @ParameterLayout(named = "Nombre")
@@ -44,15 +49,15 @@ public class Cuadrillas {
         final Ayudante ayudante){
 
         if (cuadrillaRepo.create() == true){
-            return repositoryService.persist(Cuadrilla.create(nombre, tecnico, ayudante));
+            return repositoryService.persist(cuadrillaRepo.create(nombre, tecnico, ayudante));
         } else {
-            return Cuadrilla.create(nombre, tecnico, ayudante);
+            return cuadrillaRepo.create(nombre, tecnico, ayudante);
         }
     }
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
-    @ActionLayout(named = "Editar")
-    public Cuadrilla create(
+    @ActionLayout(named = "Cuadrilla")
+    public Cuadrillas create(
 
             @Parameter(maxLength = 40)
             @ParameterLayout(named = "Nombre")
@@ -66,7 +71,7 @@ public class Cuadrillas {
             @ParameterLayout(named = "Ayudante")
             final Ayudante ayudante){
 
-        return repositoryService.persist(Cuadrilla.create(nombre,tecnico,ayudante));
+        return cuadrillaRepo.create(nombre,tecnico,ayudante);
     }
 
     @Action(semantics = SemanticsOf.SAFE)
